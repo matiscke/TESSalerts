@@ -84,12 +84,15 @@ def define_constraints(minAltitude, start_time, end_time):
     return constraints, Time(start_time), Time(end_time)
 
 
-def check_observability(constraints, observer, targets, start_time, end_time):
+def check_observability(alerts, constraints, observer, targets, start_time,
+                        end_time):
     """
     Check observability from observatory given the observational constraints.
 
     Parameters
     ----------
+    alerts : pandas DataFrame
+        table containing alerts
     constraints : list
         list of constraints
     observer : astroplan Observer object
@@ -106,8 +109,8 @@ def check_observability(constraints, observer, targets, start_time, end_time):
     alerts : pandas DataFrame
         filtered alerts table containing observable targets
     """
-    observabilityMask = is_observable(constraints, observer=CAHA,
-                                  targets=targets, time_range=[start_time, end_time])
+    observabilityMask = is_observable(constraints, observer,
+                                  targets, time_range=[start_time, end_time])
     return alerts[observabilityMask]
 
 
@@ -134,7 +137,7 @@ def defaultRun():
     alerts, targets = targetsFromCSV('data/toi-2019-01-25.csv')
     constraints, start_time, end_time = define_constraints(30,
         '2019-02-08 12:00', '2019-12-31 12:00')
-    alerts = check_observability(constraints, CAHA, targets, start_time,
+    observables = check_observability(alerts, constraints, CAHA, targets, start_time,
                                  end_time)
 
 
