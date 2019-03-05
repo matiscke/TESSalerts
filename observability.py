@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 
 from astropy.coordinates import SkyCoord, EarthLocation, Angle
 from astropy.time import Time
@@ -26,7 +27,7 @@ def define_observer():
                     elevation=2168*u.m, name="CAHA", timezone="Europe/Madrid")
 
 
-def targetsFromCSV(path):
+def targetsFromCSV(path, minUpdated=None):
     """
     Obtain a target list from a csv file.
 
@@ -38,6 +39,9 @@ def targetsFromCSV(path):
     ----------
     path : str
         path to the csv file
+    minUpdated : str, optional
+        earliest time in column "Updated" to be considered
+        Format: YYYY-MM-DD
 
     Returns
     -------
@@ -47,7 +51,13 @@ def targetsFromCSV(path):
         list containing astroplan targets
     """
     alerts = pd.read_csv(path)
+    alerts.Updated = pd.to_datetime(alerts.Updated)
     targets = []
+
+    if minUpdated is not None:
+        minUpdated = np.datetime64(minUpdated)
+        alerts = alerts[alerts.Updated > minUpdated]
+
     for toi in alerts.iterrows():
         target = toi[1]
         coords = SkyCoord(target.RA, target.Dec, unit=(u.deg, u.deg))
