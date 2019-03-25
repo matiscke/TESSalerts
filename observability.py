@@ -52,6 +52,7 @@ def targetsFromCSV(path, minUpdated=None):
     """
     alerts = pd.read_csv(path)
     alerts.Updated = pd.to_datetime(alerts.Updated)
+    alerts.Updated = alerts.Updated.dt.tz_localize(None) # strip timezone
     targets = []
 
     if minUpdated is not None:
