@@ -18,7 +18,11 @@ The code was written for Python 3.6 and makes use of the following packages:
 
 Usage
 -----
-To facilitate readability and maintainability, the pipeline is quite granularized with every step represented in a python function. These functions are equipped with docstrings, live in `observability.py`, and can be called independently. A Jupyter notebook `TESSalerts.ipynb` presents an example pipeline that uses these functions to perform all steps from reading a list of TESS alerts to arriving at a table of suitable targets. A number of plots are supposed to help with prioritizing those targets.
+To facilitate readability and maintainability, the pipeline is quite granularized with every step represented in a python function. These functions are equipped with docstrings, live in `observability.py`, and can be called independently. A Jupyter notebook `TESSalerts.ipynb` presents an example pipeline that uses these functions to perform all steps from reading a list of TESS alerts to arriving at a table of suitable targets.
+
+A number of plots are supposed to help with prioritizing those targets, for example:
+![alt text](misc/exampleObservability.png)
+
 
 Quickstart
 ----------
