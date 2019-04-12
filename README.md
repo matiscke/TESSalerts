@@ -2,7 +2,7 @@
 
 This repository contains code to select targets for follow-up observations based on candidates from the TESS alerts platform (https://tev.mit.edu). It can be applied to a list of alerts to evaluate their visibility at a specified site and filter them for various parameters.
 
-A typical use-case would be to answer the question: "_Which of these candidates *are M dwarfs* and *observable from my observatory* and when should I target them?_"
+A typical use-case would be to answer the question: "_Which of these candidates **are M dwarfs** and **observable from my observatory** and **when** should I target them?_"
 
 
 Dependencies
