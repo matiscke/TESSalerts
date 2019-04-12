@@ -12,7 +12,7 @@ from astroplan.plots import plot_airmass
 from astroplan.utils import time_grid_from_range
 
 
-def define_observer():
+def defineCAHA():
     """
     Define Calar Alto observational site.
 
@@ -223,7 +223,7 @@ def plot_observability(candidates, constraints, observer, earliestObs,
 
 
 def defaultRun():
-    CAHA = define_observer()
+    CAHA = CAHA()
     alerts, targets = targetsFromCSV('data/toi-2019-01-25.csv')
     constraints, earliestObs, latestObs = define_constraints(30,
         '2019-02-08 12:00', '2019-12-31 12:00')
