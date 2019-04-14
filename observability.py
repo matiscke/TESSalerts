@@ -164,10 +164,11 @@ def plot_observability(candidates, constraints, observer, earliestObs,
     latestObs : Time object
         Latest time of observation
     timeRes : quantity
-        time-resolution of the resulting plot
+        time-resolution of the resulting plot, should be greater than 24h
     timeSubRes : quantity
         fine resolution used for computation of observable time fractions at
-        each resolved time in the plot
+        each resolved time in the plot. Has to be (more than an order of
+        magnitude) smaller than 'timeRes' for reasonable results.
     fig : matplotlib figure object, optional
         figure to plot on
     ax : matplotlib axis object, optional
@@ -191,7 +192,7 @@ def plot_observability(candidates, constraints, observer, earliestObs,
                                        time_grid_from_range([rough_grid[i],
                                        rough_grid[i+1]],
                                      time_resolution=timeSubRes))
-        hoursObservable = obsTable['fraction of time observable']*timeRes
+        hoursObservable = obsTable['fraction of time observable']*24*u.hour
         observability_grid[:,i] = hoursObservable
 
     # now for the actual plot

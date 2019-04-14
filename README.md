@@ -31,4 +31,4 @@ Quickstart
 3. Follow the steps in the notebook
 
 ------------
-The code in this repository was written by Martin Schlecker (schlecker@mpia.de) with contributions by Paz Bluhm (pbluhm@lsw.uni-heidelberg.de). It is being actively developed in an open repository, so if you have any trouble please raise an issue.
+The code in this repository was written by Martin Schlecker (schlecker@mpia.de) with contributions by Paz Bluhm (pbluhm@lsw.uni-heidelberg.de). It is being actively developed in an open repository, so if you have any trouble please raise an [issue](issues/new "New Issue").
