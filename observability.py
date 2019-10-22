@@ -53,11 +53,11 @@ def targetsFromCSV(path, minUpdated=None):
         list containing astroplan targets
     """
     alerts = pd.read_csv(path)
-    alerts.Updated = pd.to_datetime(alerts.Updated)
-    alerts.Updated = alerts.Updated.dt.tz_localize(None) # strip timezone
     targets = []
 
     if minUpdated is not None:
+        alerts.Updated = pd.to_datetime(alerts.Updated)
+        alerts.Updated = alerts.Updated.dt.tz_localize(None) # strip timezone
         minUpdated = np.datetime64(minUpdated)
         alerts = alerts[alerts.Updated > minUpdated]
 
