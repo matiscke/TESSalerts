@@ -69,8 +69,9 @@ def targetsFromCSV(path, minUpdated=None, **read_csv_kwargs):
 
     for toi in alerts.iterrows():
         target = toi[1]
-        coords = SkyCoord(target.RA, target.Dec, unit=(u.deg, u.deg))
-        targets.append(FixedTarget(coord=coords, name=target['toi_id']))
+        coords = SkyCoord(target['TIC Right Ascension'], target['TIC Declination'],
+                          unit=(u.deg, u.deg))
+        targets.append(FixedTarget(coord=coords, name=target['Full TOI ID']))
     return alerts, targets
 
 
