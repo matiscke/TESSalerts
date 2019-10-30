@@ -29,7 +29,7 @@ def defineCAHA():
                     elevation=2168*u.m, name="CAHA", timezone="Europe/Madrid")
 
 
-def targetsFromCSV(path, minUpdated=None):
+def targetsFromCSV(path, minUpdated=None, **read_csv_kwargs):
     """
     Obtain a target list from a csv file.
 
@@ -44,6 +44,8 @@ def targetsFromCSV(path, minUpdated=None):
     minUpdated : str, optional
         earliest time in column "Updated" to be considered
         Format: YYYY-MM-DD
+    read_csv_kwargs : keyword arguments, optional
+        keyword arguments to pass to pandas' read_csv function
 
     Returns
     -------
@@ -52,10 +54,14 @@ def targetsFromCSV(path, minUpdated=None):
     targets : list
         list containing astroplan targets
     """
-    alerts = pd.read_csv(path)
+    alerts = pd.read_csv(path, **read_csv_kwargs)
     targets = []
 
     if minUpdated is not None:
+        if not 'Updated' in alerts.columns:
+            # newer alert files contain "Alerted" instead of "Updated"
+            alerts.rename(columns={'Alerted':'Updated'}, inplace=True)
+
         alerts.Updated = pd.to_datetime(alerts.Updated)
         alerts.Updated = alerts.Updated.dt.tz_localize(None) # strip timezone
         minUpdated = np.datetime64(minUpdated)
