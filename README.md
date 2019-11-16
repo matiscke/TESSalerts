@@ -29,5 +29,20 @@ To facilitate readability and maintainability, the pipeline is quite granularize
 A number of plots are supposed to help with prioritizing those targets, for example:
 ![alt text](misc/exampleObservability.png)
 
+Troubleshooting
+--------------
+In case the IERS (International Earth Rotation and Reference Systems) server is inaccessable, you can temporarily disable auto-downloading of recent IERS tables,
+```
+>>> from astropy.utils import iers
+>>> iers.conf.auto_download = False
+```
+or set the max age parameter to a higher value (or None)
+```
+>>> iers.conf.auto_max_age = None
+```
+**Note that this can give you inaccurate time estimates!**
+For more info, see https://docs.astropy.org/en/stable/utils/iers.html
+
+
 ------------
 The code in this repository was written by Martin Schlecker (schlecker@mpia.de) with contributions by Paz Bluhm (pbluhm@lsw.uni-heidelberg.de). It is being actively developed in an open repository, so if you have any trouble please raise an [issue](https://github.com/matiscke/TESSalerts/issues/new "New Issue").
