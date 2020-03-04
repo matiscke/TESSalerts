@@ -55,6 +55,7 @@ def targetsFromCSV(path, minUpdated=None, **read_csv_kwargs):
         list containing astroplan targets
     """
     alerts = pd.read_csv(path, **read_csv_kwargs)
+    alerts.rename(columns={'Full TOI ID': 'TOI'}, inplace=True)
     targets = []
 
     if minUpdated is not None:
@@ -71,7 +72,7 @@ def targetsFromCSV(path, minUpdated=None, **read_csv_kwargs):
         target = toi[1]
         coords = SkyCoord(target['TIC Right Ascension'], target['TIC Declination'],
                           unit=(u.deg, u.deg))
-        targets.append(FixedTarget(coord=coords, name=target['Full TOI ID']))
+        targets.append(FixedTarget(coord=coords, name=target['TOI']))
     return alerts, targets
 
 
