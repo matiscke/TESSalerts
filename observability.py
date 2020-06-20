@@ -191,6 +191,9 @@ def plot_observability(candidates, constraints, observer, earliestObs,
         axis containing the plot
     """
 
+    # flip candidate list
+    candidates = candidates[::-1]
+
     # prepare the grid
     rough_grid = time_grid_from_range([earliestObs, latestObs],
                                      time_resolution=timeRes)
@@ -209,7 +212,7 @@ def plot_observability(candidates, constraints, observer, earliestObs,
     dates = rough_grid.plot_date
     extent = [dates[0], dates[-1], -.5, len(candidates) -.5]
     im = ax.imshow(observability_grid, cmap='inferno', aspect='auto',
-                   extent=extent, **kwargs)
+                   extent=extent, origin='lower', **kwargs)
 
     # get date ticks right
     ax.xaxis_date()
