@@ -21,6 +21,7 @@ The code was written for Python 3.6 and makes use of the following packages:
   + astroplan
   + astroquery
   + jupyter (optional)
+  + openpyxl (optional)
 
 Usage
 -----
