@@ -46,4 +46,4 @@ For more info, see https://docs.astropy.org/en/stable/utils/iers.html
 
 
 ------------
-The code in this repository was written by Martin Schlecker (schlecker@mpia.de) with contributions by Paz Bluhm (pbluhm@lsw.uni-heidelberg.de). It is being actively developed in an open repository, so if you have any trouble please raise an [issue](https://github.com/matiscke/TESSalerts/issues/new "New Issue").
+The code in this repository was written by Martin Schlecker (schlecker@arizona.edu) with contributions by Paz Bluhm (pbluhm@lsw.uni-heidelberg.de). It is being actively developed in an open repository, so if you have any trouble please raise an [issue](https://github.com/matiscke/TESSalerts/issues/new "New Issue").
